@@ -21,12 +21,11 @@ pipelines:
             - node
           script:
             - yarn build
-            - apt-get update && apt-get install --yes zip
-            - zip -r app.zip ./build/
+            - tar czfv application.tgz ./build
             - pipe: atlassian/heroku-deploy:1.0.0
               variables:
                 HEROKU_API_KEY: $HEROKU_API_KEY
                 HEROKU_APP_NAME: $HEROKU_APP_NAME
-                ZIP_FILE: 'app.zip'
+                ZIP_FILE: 'application.tgz'
                 WAIT: 'true'
                 # DEBUG: '<boolean>' # Optional
