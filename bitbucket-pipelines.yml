@@ -20,7 +20,7 @@ pipelines:
           caches:
             - node
           script:
-            - yarn build
+            - yarn build-dev
             - tar czfv application.tgz package.json server.js build/
             - pipe: atlassian/heroku-deploy:1.0.0
               variables:
