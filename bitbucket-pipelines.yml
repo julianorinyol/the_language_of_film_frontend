@@ -21,7 +21,7 @@ pipelines:
             - node
           script:
             - yarn build
-            - tar czfv application.tgz ./build
+            - tar czfv application.tgz package.json server.js build/
             - pipe: atlassian/heroku-deploy:1.0.0
               variables:
                 HEROKU_API_KEY: $HEROKU_API_KEY
