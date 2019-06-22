@@ -11,5 +11,29 @@ pipelines:
         caches:
           - node
         script: # Modify the commands below to build your repository.
-          - npm install
-          - npm test
+          - yarn
+          - yarn test
+          - yarn build
+          - zip -r app.zip ./build/
+        artifacts: 
+          - app.zip
+  branches:
+    master:
+      - step:
+          deployment: Production-heroku1
+          caches:
+            - node
+          script:
+            - yarn build
+            - pipe: atlassian/heroku-deploy:1.0.0
+              variables:
+                HEROKU_API_KEY: $HEROKU_API_KEY
+                HEROKU_APP_NAME: $HEROKU_APP_NAME
+                ZIP_FILE: 'app.zip'
+                WAIT: 'true'
+                # DEBUG: '<boolean>' # Optional
+
+
+
+
+
