@@ -13,10 +13,6 @@ pipelines:
         script: # Modify the commands below to build your repository.
           - yarn
           - yarn test
-          - yarn build
-          - zip -r app.zip ./build/
-        artifacts: 
-          - app.zip
   branches:
     master:
       - step:
@@ -25,6 +21,7 @@ pipelines:
             - node
           script:
             - yarn build
+            - zip -r app.zip ./build/
             - pipe: atlassian/heroku-deploy:1.0.0
               variables:
                 HEROKU_API_KEY: $HEROKU_API_KEY
