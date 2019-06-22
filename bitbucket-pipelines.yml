@@ -21,6 +21,7 @@ pipelines:
             - node
           script:
             - yarn build
+            - apt-get install zip
             - zip -r app.zip ./build/
             - pipe: atlassian/heroku-deploy:1.0.0
               variables:
@@ -29,8 +30,3 @@ pipelines:
                 ZIP_FILE: 'app.zip'
                 WAIT: 'true'
                 # DEBUG: '<boolean>' # Optional
-
-
-
-
-
