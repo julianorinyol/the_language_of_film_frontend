@@ -5,27 +5,41 @@ import Navigation from './components/Navigation'
 import WordsPage from './components/WordsPage/WordsPage'
 import StudyPage from './components/StudyPage/StudyPage'
 import Lehmann from './data/herr_lehmann.json'
-
-function Index() {
-  return <h2>Home</h2>;
-}
+import BlacklistPage from './components/BlacklistPage/BlacklistPage'
+import { defaultBlacklist } from './constants'
 
 function AppRouter() {
+  const filterdWords = Lehmann.words.filter(word => {
+    return defaultBlacklist.indexOf(word.word.trim()) === -1
+  })
+
   return (
     <Router>
       <div>
         <Navigation />
-        <Route path="/" exact component={Index} />
+        <Route 
+          path="/" 
+          exact
+          render={() => {
+            return <StudyPage items={convertWords(filterdWords)}/>
+          }} 
+        />
         <Route 
           path="/study/" 
           render={() => {
-            return <StudyPage items={convertWords(Lehmann.words)}/>
+            return <StudyPage items={convertWords(filterdWords)}/>
           }} 
         />
         <Route 
           path="/words/" 
           render={() => {
-            return <WordsPage words={Lehmann.words}/>
+            return <WordsPage words={filterdWords}/>
+          }} 
+        />
+        <Route 
+          path="/blacklist/" 
+          render={() => {
+            return <BlacklistPage blacklist={defaultBlacklist}/>
           }} 
         />
       </div>
@@ -40,6 +54,7 @@ function convertWords(words) {
     converted.push({
       question: word.word,
       answer: word.english,
+      examples: JSON.parse(word.examples)
     })
 
   }
