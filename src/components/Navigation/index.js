@@ -42,11 +42,6 @@ const Navigation = (props) => {
     <div className={classes.root}>
       <AppBar position="static">
         <Tabs value={value} onChange={handleChange}>
-          <Tab label="home" 
-            value="/" 
-            component={Link} 
-            to={'/'} />
-          />
           <Tab label="study" 
             value="/study/" 
             component={Link} 
@@ -56,6 +51,11 @@ const Navigation = (props) => {
             value="/words/" 
             component={Link}
             to={'/words/'} />
+          />
+          <Tab label="blacklist" 
+            value="/blacklist/" 
+            component={Link}
+            to={'/blacklist/'} />
           />
         </Tabs>
       </AppBar>

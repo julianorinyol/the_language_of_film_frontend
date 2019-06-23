@@ -1,15 +1,21 @@
 import React from "react";
-import StudySection from '../StudySection/StudySection'
+import Card from '../Card/Card'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles({
   container: {
     paddingTop: 50,
   },
+  studyPageBox: {
+  	minWidth: 275,
+    maxWidth: 700,
+    margin: 'auto',
+  }
 });
 
 let StudyPage = (props) => {
@@ -37,9 +43,11 @@ let StudyPage = (props) => {
 		<React.Fragment>
 		  <CssBaseline />
 		  <Container tabIndex="0" onKeyDown={onKeyDown} className={classes.container}>
-		    <StudySection item={currentItem} />
-		    <Button onClick={(e)=> changeItemIndex(currentItemIndex - 1)} color="primary" size="small">Previous</Button>
-		    <Button onClick={(e)=> changeItemIndex(currentItemIndex + 1)} color="primary" size="small">Next</Button>
+		  	<Box className={classes.studyPageBox}>
+		    	<Card item={currentItem} />
+		    	<Button onClick={(e)=> changeItemIndex(currentItemIndex - 1)} color="primary" size="small">Previous</Button>
+		    	<Button onClick={(e)=> changeItemIndex(currentItemIndex + 1)} color="primary" size="small">Next</Button>
+		    </Box>
 		  </Container>
 		</React.Fragment>
 		

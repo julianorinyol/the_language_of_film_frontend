@@ -3,7 +3,8 @@ import Word from '../Word/Word'
 
 const  WordsPage = (props) => {
 
-	const words = props.words.slice(0,100)
+	// const words = props.words.slice(0,100)
+	const { words } = props
 
 	return (
 		<div>
