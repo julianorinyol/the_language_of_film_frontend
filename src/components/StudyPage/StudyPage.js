@@ -1,7 +1,6 @@
 import React from "react";
 import StudySection from '../StudySection/StudySection'
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button';

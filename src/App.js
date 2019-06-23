@@ -10,10 +10,6 @@ function Index() {
   return <h2>Home</h2>;
 }
 
-function Users() {
-  return <h2>Users</h2>;
-}
-
 function AppRouter() {
   return (
     <Router>

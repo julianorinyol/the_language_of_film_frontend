@@ -1,5 +1,4 @@
 import React from 'react'
-import Lehmann from '../../data/herr_lehmann.json'
 import Word from '../Word/Word'
 
 const  WordsPage = (props) => {
