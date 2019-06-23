@@ -996,8 +996,8 @@
       "examples": "[\"Wenn du doch weißt\\ndass ich nachts--\", \"nur um mir zu sagen dass du\\nschon seit drei Stunden auf bist\", \"Ganz lieb dass du das sagst Heidi\", \"Und wenn ich dir sage\\ndass kein Braten von gestern mehr da ist\", \"Dass der Braten sicher schon so weit ist\\ndass du was abschneiden kannst\", \"Dass der Braten sicher schon so weit ist\\ndass du was abschneiden kannst\", \"- Gibt's hier noch mehr von deiner Sorte\\n- Nicht dass ich wüsste\", \"Was hat die Tatsache dass man in einer\\nKneipe arbeitet mit Lebensinhalt zu tun\", \"Da sitzen ja die echten Penner zusammen\\nIch wusste dass ihr wieder hier seid\", \"Musst du drauf achten\\ndass die hier keine Drogen nehmen\", \"- Klauen wie die Raben nicht koksen\\n- Egal Dass hier keiner kifft\", \"Gib mir dein Wort dass du abhaust\\nwenn ich loslasse\", \"Du hast Glück dass ich gekommen bin\\nbevor Herr Lehmann ernst gemacht hat\", \"Lieber brenne ich es ab\\nals dass du es kriegst du Natter\", \"Erwin meint dass der Typ\\nda hinten am Tisch 'n Zivilbulle sei\", \"Hab ich erwähnt\\ndass es was zu feiern gibt\", \"dass wir einfach\\num die Ecke gehen sollten\", \"Ist 'ne Schwulen-Kneipe Ist ja die Idee\\ndass die Schwulen mal unter sich sind\", \"Die denken\\ndass mit dir nicht viel los ist\", \"Dass du mich liebst\", \"Das hat gedauert\\nDass die einen kontrollieren dürfen\", \"Sicher Wenn du sagst\\ndass wir das so verabredet haben\", \"Das war aber nett\\ndass Sie extra hergekommen sind\", \"Dass du von Kunst und alledem\\nkeine Ahnung hast\", \"Ich wusste nicht dass man das muss\\nWas weiß ich von den DDR-Zollvorschriften\", \"- Nicht dass ich wüsste\\n- Nein\", \"- Wie nein\\n- Nein nicht dass ich wüsste\", \"Sie sagten nicht nur\\nNicht dass ich wüsste\", \"Sie haben gesagt\\nNein nicht dass ich wüsste\", \"Dass Erwin ihm noch Geld schuldet und so\\nUnd dann hat Karl ihm eine gelangt\", \"- Schön dass du das mal merkst\\n- Hab ich immer gewusst\", \"Schön dass du's auch mal sagst\", \"Wenn du ihn zuerst sprichst sag ihm\\ndass er nicht mehr wiederzukommen braucht\", \"Ich hab ihm gesagt\\ndass ich allein mit dir reden will\", \"Ich finde nicht dass du\\nirgendwelche Ansprüche auf mich hast\", \"Ich hab dir gesagt dass es bei mir anders\\nist und du keine Ansprüche auf mich hast\", \"Was kann ich dazu dass du\\nzu blöd bist rüberzukommen\", \"Sagte ich Katrin Warmers du bist schuld\\ndaran dass ich nicht rübergekommen bin\", \"Sag du mir nicht dass es aus ist\", \"Du hast mir überhaupt nicht zu sagen\\ndass es aus ist\", \"- Dass es für mich ein und dasselbe ist\\n- Nein das andere\", \"Klar glaubst du das nicht\\nDu kannst sagen dass es aus ist\", \"Wenn ich sage dass es aus ist\\ndann kannst du's dir gar nicht vorstellen\", \"- Eltern Onkel Tante Freundin\\n- Nicht dass ich wüsste\", \"- Angst wovor\\n- Dass das alles zusammenbricht\", \"Dass er versagt\\nDann bricht alles zusammen\", \"Heidi hat mir auch erzählt\\ndass du heute Geburtstag hast\", \"Dass die jetzt alle hier rüberkommen\"]"
     },
     {
-      "word": "nachts- at night-",
-      "english": "",
+      "word": "nachts",
+      "english": "at night",
       "examples": "[\"Wenn du doch weißt\\ndass ich nachts--\"]"
     },
     {
@@ -1401,8 +1401,8 @@
       "examples": "[\"- Was willst du trinken\\n- Weiß ich auch nicht\", \"Ich nehm noch 'n Bier\\noder was weiß Kaffee oder Zeitung\", \"Schöne Köchin\\nvon der ich den Namen nicht weiß\", \"Schöne Köchin\\nvon der ich den Namen nicht weiß\", \"- Was weiß ich sagt man doch so\\n- Sagt man halt so\", \"- Sie war lau\\n- Weiß gar nicht warum ich noch aufmache\", \"Bei dir weiß man nie wie du etwas meinst\", \"Ich weiß nicht\\nDer erinnert mich an Schneider-Jürgen\", \"- Wie heißt der eigentlich\\n- Was weiß ich Volker\", \"Genau Und dann sagt er Ich weiß\", \"Ich weiß nicht Du kommst mir vor\\nwie jemand der immer kriegt was er will\", \"Ach Ich Ich weiß nicht\\nob ich dich liebe\", \"Ich weiß nicht\", \"Äh Och ich weiß gar nicht ob wir\\nden noch da haben Vielleicht ein Bier\", \"- Das ergibt doch gar keinen Sinn\\n- Ich weiß Mutter ich weiß\", \"- Das ergibt doch gar keinen Sinn\\n- Ich weiß Mutter ich weiß\", \"Also ich weiß zwar nicht\\nwas hier so läuft\", \"- Siehst du Und das meine ich\\n- Ich weiß\", \"Ich wusste nicht dass man das muss\\nWas weiß ich von den DDR-Zollvorschriften\", \"Ich weiß es nicht Der war ganz komisch\\nwie wenn man ihn überhaupt nicht kennt\", \"Ich weiß was du jetzt denkst\", \"Eben ich weiß überhaupt nichts\", \"Aber Heidi weiß doch immer alles\", \"Ich wette Heidi weiß das\\nHeidi weiß immer was\", \"Ich wette Heidi weiß das\\nHeidi weiß immer was\", \"- Weiß nicht keine Ahnung\\n- LSD\", \"Heidi Was die alles weiß\", \"da weiß auch keiner\\nwann das eigentlich anfing\", \"Weiß ich noch nicht\\nIrgendwas wird sich da schon ergeben\"]"
     },
     {
-      "word": "wär' woulds",
-      "english": "",
+      "word": "wär",
+      "english": "woulds",
       "examples": "[\"Wie wär's mit 'nem Bier\"]"
     },
     {
@@ -2206,8 +2206,8 @@
       "examples": "[\"Ein Fass oder 'ne Kotztüte\"]"
     },
     {
-      "word": "scheiß- shitmetapher",
-      "english": "",
+      "word": "scheiß-metapher",
+      "english": "shit metaphor",
       "examples": "[\"Ist 'ne Scheiß-Metapher\"]"
     },
     {
