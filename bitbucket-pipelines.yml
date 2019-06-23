@@ -21,7 +21,7 @@ pipelines:
             - node
           script:
             - yarn
-            - yarn build-dev
+            - yarn build-production
             - tar czfv application.tgz package.json server.js build/
             - pipe: atlassian/heroku-deploy:1.0.0
               variables:
