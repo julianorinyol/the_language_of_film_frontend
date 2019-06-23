@@ -47,21 +47,18 @@ const Navigation = (props) => {
             component={Link} 
             to={'/'} />
           />
-          <Tab label="about" 
-            value="/about/" 
+          <Tab label="study" 
+            value="/study/" 
             component={Link} 
-            to={'/about/'} />
+            to={'/study/'} />
           />
-          <Tab label="users" 
-            value="/users/" 
-            component={Link} 
-            to={'/users/'} />
+          <Tab label="words" 
+            value="/words/" 
+            component={Link}
+            to={'/words/'} />
           />
         </Tabs>
       </AppBar>
-      {/*value === '/about/' && <TabContainer>About</TabContainer>*/}
-      {/*value === '/' && <TabContainer>Home</TabContainer>*/}
-      {/*value === '/users/' && <TabContainer>users</TabContainer>*/}
     </div>
   );
 }

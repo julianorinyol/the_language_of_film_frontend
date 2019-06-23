@@ -2,13 +2,12 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 import Navigation from './components/Navigation'
+import WordsPage from './components/WordsPage/WordsPage'
+import StudyPage from './components/StudyPage/StudyPage'
+import Lehmann from './data/herr_lehmann.json'
 
 function Index() {
   return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
 }
 
 function Users() {
@@ -21,11 +20,35 @@ function AppRouter() {
       <div>
         <Navigation />
         <Route path="/" exact component={Index} />
-        <Route path="/about/" component={About} />
-        <Route path="/users/" component={Users} />
+        <Route 
+          path="/study/" 
+          render={() => {
+            return <StudyPage items={convertWords(Lehmann.words)}/>
+          }} 
+        />
+        <Route 
+          path="/words/" 
+          render={() => {
+            return <WordsPage words={Lehmann.words}/>
+          }} 
+        />
       </div>
     </Router>
   );
+}
+
+function convertWords(words) {
+  let converted = []
+
+  for(const word of words) {
+    converted.push({
+      question: word.word,
+      answer: word.english,
+    })
+
+  }
+
+  return converted
 }
 
 export default AppRouter;
