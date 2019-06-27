@@ -1,18 +1,19 @@
 import React from 'react'
 import Word from '../Word/Word'
-
-const  WordsPage = (props) => {
-
-	// const words = props.words.slice(0,100)
+import { compose } from 'redux'
+import WordsContainer from '../../containers/WordsContainer'
+const WordsPage = (props) => {
 	const { words } = props
-
 	return (
 		<div>
-			{words.map((word, i) => {
-				return <Word key={word.word} word={word} />
+			{words && words.map((word, i) => {
+				return <Word key={word.question} word={word} />
 			})}
 		</div>
 	)
 }
 
-export default WordsPage
+const wrapperHigherOrderComponents = compose(WordsContainer)
+// export const StudyPageContainer = wrapperHigherOrderComponents(StudyPage)
+export const WordsPageContainer = wrapperHigherOrderComponents(WordsPage)
+// export default compose(WordsContainer)(WordsPage)

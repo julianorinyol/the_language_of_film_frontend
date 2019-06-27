@@ -1,0 +1,9 @@
+.word {
+	min-height: 60px;
+	border-bottom: 1px solid lightgrey;
+	display: flex;
+	align-items: center;
+	.word-question {
+		min-width: 150px;
+	}
+}
