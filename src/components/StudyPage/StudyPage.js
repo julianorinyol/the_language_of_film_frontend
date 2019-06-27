@@ -6,6 +6,9 @@ import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import { compose } from 'redux'
+import StudyPageContainerWrapper from '../../containers/StudyPageContainer/StudyPageContainer'
 
 const useStyles = makeStyles({
   container: {
@@ -20,35 +23,44 @@ const useStyles = makeStyles({
 
 let StudyPage = (props) => {
 	const classes = useStyles();
-	const [currentItemIndex, setCurrentItemIndex] = React.useState(0);
+	
+	function changeItemIndex(changeNum) {
+		const newCurrentItemIndex = props.currentIndex + changeNum
 
-	function changeItemIndex(newCurrentItemIndex) {
 		const length = props.items.length 
-		const inBounds = 0 < newCurrentItemIndex < length
+		const inBounds = ( 0 <= newCurrentItemIndex ) && ( newCurrentItemIndex < length)
+
 		if(inBounds) {
-			setCurrentItemIndex(newCurrentItemIndex);
+			props.changeItemIndex(changeNum)
 		}
+
 	}
 
-	let currentItem = props.items[currentItemIndex]
+	// let currentItem = props.items[currentItemIndex]
+	let currentItem = props.items[props.currentIndex]
 	function onKeyDown(e) {
 		if(e.key === 'ArrowLeft') {
-			changeItemIndex(currentItemIndex - 1)
+			changeItemIndex(-1)
 		} else if(e.key === 'ArrowRight') {
-			changeItemIndex(currentItemIndex + 1)
+			changeItemIndex(1)
 		}
 	}
-
+	const total = props.items.length
 	return (
 		<React.Fragment>
 		  <CssBaseline />
-		  <Container tabIndex="0" onKeyDown={onKeyDown} className={classes.container}>
+		  {	currentItem && (
+		  	<Container tabIndex="0" onKeyDown={onKeyDown} className={classes.container}>
 		  	<Box className={classes.studyPageBox}>
 		    	<Card item={currentItem} />
-		    	<Button onClick={(e)=> changeItemIndex(currentItemIndex - 1)} color="primary" size="small">Previous</Button>
-		    	<Button onClick={(e)=> changeItemIndex(currentItemIndex + 1)} color="primary" size="small">Next</Button>
+		    	<Button onClick={(e)=> changeItemIndex(-1)} color="primary" size="small">Previous</Button>
+		    	<Button onClick={(e)=> changeItemIndex(1)} color="primary" size="small">Next</Button>
+		    	{/*<Typography>{currentItemIndex + 1} / {total}</Typography>*/}
+		    	<Typography>{props.currentIndex + 1} / {total}</Typography>
 		    </Box>
 		  </Container>
+		  )
+			}
 		</React.Fragment>
 		
 	)
@@ -60,7 +72,11 @@ const itemShape = {
 }
 
 StudyPage.propTypes = {
-	items: PropTypes.arrayOf(PropTypes.shape(itemShape)).isRequired
+	items: PropTypes.arrayOf(PropTypes.shape(itemShape)).isRequired,
+	currentIndex: PropTypes.number.isRequired
 }
 
-export default StudyPage
+
+const wrapperHigherOrderComponents = compose(StudyPageContainerWrapper)
+
+export const StudyPageContainer = wrapperHigherOrderComponents(StudyPage)

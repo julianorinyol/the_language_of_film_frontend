@@ -1,18 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Redirect, BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 import Navigation from './components/Navigation'
-import WordsPage from './components/WordsPage/WordsPage'
-import StudyPage from './components/StudyPage/StudyPage'
-import Lehmann from './data/herr_lehmann.json'
+import { WordsPageContainer } from './components/WordsPage/WordsPage'
+import { StudyPageContainer } from './components/StudyPage/StudyPage'
 import BlacklistPage from './components/BlacklistPage/BlacklistPage'
 import { defaultBlacklist } from './constants'
 
-function AppRouter() {
-  const filterdWords = Lehmann.words.filter(word => {
-    return defaultBlacklist.indexOf(word.word.trim()) === -1
-  })
-
+function AppRouter(props) {
   return (
     <Router>
       <div>
@@ -21,19 +16,20 @@ function AppRouter() {
           path="/" 
           exact
           render={() => {
-            return <StudyPage items={convertWords(filterdWords)}/>
+            return <Redirect to="/study"/>
           }} 
         />
         <Route 
           path="/study/" 
           render={() => {
-            return <StudyPage items={convertWords(filterdWords)}/>
+            return <StudyPageContainer />
           }} 
         />
         <Route 
           path="/words/" 
           render={() => {
-            return <WordsPage words={filterdWords}/>
+            return <WordsPageContainer />
+            // return <div>bla</div>
           }} 
         />
         <Route 
@@ -47,19 +43,5 @@ function AppRouter() {
   );
 }
 
-function convertWords(words) {
-  let converted = []
-
-  for(const word of words) {
-    converted.push({
-      question: word.word,
-      answer: word.english,
-      examples: JSON.parse(word.examples)
-    })
-
-  }
-
-  return converted
-}
 
 export default AppRouter;

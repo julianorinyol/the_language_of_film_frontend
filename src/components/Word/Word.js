@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import './Word.scss'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
@@ -25,11 +25,11 @@ const Word = (props) => {
 
 	const { word } = props
 	return (
-		<div key={word.word}>
-			{ word.word }
+		<div className="word" key={word.question}>
+			<span className='word-question'>{ word.question }</span>
 		
 			{ open ? 
-				word.english
+				<span className='word-answer'>{word.answer}</span>
 				: (
 					<Button onClick={(e)=> handleChange(e, true)} variant="contained" color="primary" className={classes.button}>
 					   See Answer
