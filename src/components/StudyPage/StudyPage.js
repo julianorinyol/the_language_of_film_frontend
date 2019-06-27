@@ -1,4 +1,5 @@
 import React from "react";
+import './StudyPage.scss'
 import Card from '../Card/Card'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
@@ -46,9 +47,11 @@ let StudyPage = (props) => {
 		}
 	}
 	const total = props.items.length
+
 	return (
 		<React.Fragment>
 		  <CssBaseline />
+		  
 		  {	currentItem && (
 		  	<Container tabIndex="0" onKeyDown={onKeyDown} className={classes.container}>
 		  	<Box className={classes.studyPageBox}>
@@ -61,6 +64,10 @@ let StudyPage = (props) => {
 		  </Container>
 		  )
 			}
+			<div className="page-description">
+				<Typography>{props.message}</Typography> 
+				<Typography>if you use the same browser, it will remember your progress (hopefully)</Typography> 
+			</div>
 		</React.Fragment>
 		
 	)

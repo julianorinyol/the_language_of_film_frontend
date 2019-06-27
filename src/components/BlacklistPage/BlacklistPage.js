@@ -21,6 +21,7 @@ let BlackListPage = (props) => {
 		<React.Fragment>
 		  <CssBaseline />
 		  <Container tabIndex="0" className={classes.container}>
+		  	<p>this is all the words that have been filtered out, as they are very common, or they are proper nouns or mistakes in the subtitle file</p>
 		  	<section className={classes.blackListSection}>
 			  	{props.blacklist.map((word, i) => {
 			  		return <div key={word}>{word}</div>

@@ -21,6 +21,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default Component => {
 	class StudyPageContainer extends React.Component {
 		componentDidMount() {
+      console.log(Object.keys(this.props))
 			this.props.fetchCards()
 		}
 

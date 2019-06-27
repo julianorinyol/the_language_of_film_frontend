@@ -6,9 +6,12 @@ const WordsPage = (props) => {
 	const { words } = props
 	return (
 		<div>
-			{words && words.map((word, i) => {
-				return <Word key={word.question} word={word} />
-			})}
+			<p>this is all of the words from Herr Lehmann in a giant list. </p>
+			<div>
+				{words && words.map((word, i) => {
+					return <Word key={word.question} word={word} />
+				})}
+			</div>
 		</div>
 	)
 }

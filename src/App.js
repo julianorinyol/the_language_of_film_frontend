@@ -22,7 +22,8 @@ function AppRouter(props) {
         <Route 
           path="/study/" 
           render={() => {
-            return <StudyPageContainer />
+            const message = "These are all of the words in the german subtitle file for the film Herr Lehmann. Some of the translations are wrong:) \n and some of the words came out of the script funny"
+            return <StudyPageContainer message={message} />
           }} 
         />
         <Route 
