@@ -9,9 +9,15 @@ export const changeCurrentIndex = (changeNum) => {
 }
 
 const receiveCards = (words) => {
-	const filteredWords = words.filter(word => {
-	  return defaultBlacklist.indexOf(word.word.trim()) === -1
-	})
+	const filteredWords = {}
+
+	for(const wordKey in words) {
+		const wordInfo = words[wordKey]
+
+		if(defaultBlacklist.indexOf(wordInfo.word.trim()) === -1) {
+			filteredWords[wordKey] = wordInfo
+		}
+	}
 
 	const transformed = convertWords(filteredWords)
 
@@ -28,15 +34,15 @@ export const fetchCards = () => {
 
 
 function convertWords(words) {
-  let converted = []
+  let converted = {}
 
-  for(const word of words) {
-    converted.push({
-      question: word.word,
-      answer: word.english,
-      examples: JSON.parse(word.examples)
-    })
-
+  for(const wordKey in words) {
+  	const wordInfo = words[wordKey]
+  	converted[wordInfo.word] = {
+      question: wordInfo.word,
+      answer: wordInfo.english,
+      examples: JSON.parse(wordInfo.examples)
+    }
   }
 
   return converted

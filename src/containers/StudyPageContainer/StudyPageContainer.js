@@ -4,8 +4,9 @@ import { changeCurrentIndex, fetchCards } from '../../actions/StudyPageActions/S
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    items: state.cards,
-    currentIndex: state.currentIndex
+    items: state.cards.cards,
+    films: state.films.films,
+    currentIndex: state.cards.currentIndex
   }
 }
 
@@ -21,7 +22,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default Component => {
 	class StudyPageContainer extends React.Component {
 		componentDidMount() {
-      console.log(Object.keys(this.props))
 			this.props.fetchCards()
 		}
 
