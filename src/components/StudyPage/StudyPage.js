@@ -63,7 +63,7 @@ let StudyPage = (props) => {
 		  	<Box className={classes.studyPageBox}>
 		  		  { props.films && (
 		  		  		<div className={classes.films}>
-		  		  			showing words from films: {Object.values(props.films).map((film, i) => {
+		  		  			showing words from films: {Object.values(props.films).filter(x=> x.selected).map((film, i) => {
 		  		  				return film.name
 		  		  			}).join(', ')}
 		  		  		</div>

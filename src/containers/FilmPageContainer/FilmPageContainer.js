@@ -1,7 +1,7 @@
 
 import { connect } from 'react-redux'
 import React from 'react'
-import { selectFilm } from '../../actions/FilmPageActions/FilmPageActions'
+import { selectFilm } from '../../actions/FilmActions/FilmActions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
