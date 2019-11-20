@@ -4,6 +4,7 @@ import './App.css';
 import Navigation from './components/Navigation'
 import { WordsPageContainer } from './components/WordsPage/WordsPage'
 import { StudyPageContainer } from './components/StudyPage/StudyPage'
+import { FilmPageContainer } from './components/FilmPage/FilmPage'
 import BlacklistPage from './components/BlacklistPage/BlacklistPage'
 import { defaultBlacklist } from './constants'
 
@@ -16,7 +17,13 @@ function AppRouter(props) {
           path="/" 
           exact
           render={() => {
-            return <Redirect to="/study"/>
+            return <Redirect to="/films/" />
+          }} 
+        />
+        <Route 
+          path="/films/" 
+          render={() => {
+            return <FilmPageContainer />
           }} 
         />
         <Route 
@@ -39,6 +46,7 @@ function AppRouter(props) {
             return <BlacklistPage blacklist={defaultBlacklist}/>
           }} 
         />
+
       </div>
     </Router>
   );

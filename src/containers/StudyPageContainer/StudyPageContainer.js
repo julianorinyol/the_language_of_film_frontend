@@ -1,18 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { changeCurrentIndex, fetchCards } from '../../actions/StudyPageActions/StudyPageActions'
+import { changeCurrentIndex, fetchCardsForFilms } from '../../actions/StudyPageActions/StudyPageActions'
+// import { getSelectedFilms } from '../../actions/FilmActions/FilmActions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    items: state.cards,
-    currentIndex: state.currentIndex
+    items: state.cards.cards,
+    films: state.films.films,
+    currentIndex: state.cards.currentIndex,
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-  	fetchCards: () => {
-  		return dispatch(fetchCards())
+  	fetchCardsForFilms: (films) => {
+  		return dispatch(fetchCardsForFilms(films))
   	},
     changeItemIndex: (num) => dispatch(changeCurrentIndex(num))
   }
@@ -21,8 +23,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default Component => {
 	class StudyPageContainer extends React.Component {
 		componentDidMount() {
-      console.log(Object.keys(this.props))
-			this.props.fetchCards()
+      const selectedFilms = Object.values(this.props.films).filter(film => film.selected)
+			this.props.fetchCardsForFilms(selectedFilms)
 		}
 
 		render() { 

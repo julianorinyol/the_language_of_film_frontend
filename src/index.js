@@ -9,9 +9,13 @@ import { Provider } from 'react-redux'
 import { saveState, loadState }  from './helpers/localStorage'
 import throttle from 'lodash/throttle';
 import studyCards from './reducers/StudyCards'
-const persistedState = loadState()
+import FilmsReducer from './reducers/FilmsReducer'
+import { combineReducers } from 'redux'
 
-let store = createStore(studyCards, persistedState)
+const persistedState = loadState()
+const rootReducer = combineReducers({cards: studyCards, films: FilmsReducer})
+
+let store = createStore(rootReducer, persistedState)
 
 store.subscribe(throttle(() => {
   saveState( store.getState() );

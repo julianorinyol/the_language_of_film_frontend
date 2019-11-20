@@ -19,26 +19,33 @@ const useStyles = makeStyles({
   	minWidth: 275,
     maxWidth: 700,
     margin: 'auto',
+  },
+  films: {
+  	marginBottom: 10,
+  	color: 'grey'
+
   }
 });
 
 let StudyPage = (props) => {
 	const classes = useStyles();
 	
+	const itemKeys = Object.keys(props.items)
+	const total = itemKeys.length
+	
 	function changeItemIndex(changeNum) {
 		const newCurrentItemIndex = props.currentIndex + changeNum
 
-		const length = props.items.length 
-		const inBounds = ( 0 <= newCurrentItemIndex ) && ( newCurrentItemIndex < length)
+		const inBounds = ( 0 <= newCurrentItemIndex ) && ( newCurrentItemIndex < total)
 
 		if(inBounds) {
 			props.changeItemIndex(changeNum)
 		}
-
 	}
 
-	// let currentItem = props.items[currentItemIndex]
-	let currentItem = props.items[props.currentIndex]
+	let currentItemKey = itemKeys[props.currentIndex]
+	let currentItem = props.items[currentItemKey]
+
 	function onKeyDown(e) {
 		if(e.key === 'ArrowLeft') {
 			changeItemIndex(-1)
@@ -46,15 +53,22 @@ let StudyPage = (props) => {
 			changeItemIndex(1)
 		}
 	}
-	const total = props.items.length
 
 	return (
 		<React.Fragment>
 		  <CssBaseline />
-		  
+	
 		  {	currentItem && (
-		  	<Container tabIndex="0" onKeyDown={onKeyDown} className={classes.container}>
+		  <Container tabIndex="0" onKeyDown={onKeyDown} className={classes.container}>
 		  	<Box className={classes.studyPageBox}>
+		  		  { props.films && (
+		  		  		<div className={classes.films}>
+		  		  			showing words from films: {Object.values(props.films).filter(x=> x.selected).map((film, i) => {
+		  		  				return film.name
+		  		  			}).join(', ')}
+		  		  		</div>
+		  		  	)
+		  			}
 		    	<Card item={currentItem} />
 		    	<Button onClick={(e)=> changeItemIndex(-1)} color="primary" size="small">Previous</Button>
 		    	<Button onClick={(e)=> changeItemIndex(1)} color="primary" size="small">Next</Button>
@@ -69,7 +83,6 @@ let StudyPage = (props) => {
 				<Typography>if you use the same browser, it will remember your progress (hopefully)</Typography> 
 			</div>
 		</React.Fragment>
-		
 	)
 }
 
@@ -79,10 +92,9 @@ const itemShape = {
 }
 
 StudyPage.propTypes = {
-	items: PropTypes.arrayOf(PropTypes.shape(itemShape)).isRequired,
+	items: PropTypes.objectOf(PropTypes.shape(itemShape)).isRequired,
 	currentIndex: PropTypes.number.isRequired
 }
-
 
 const wrapperHigherOrderComponents = compose(StudyPageContainerWrapper)
 

@@ -8,7 +8,7 @@ const WordsPage = (props) => {
 		<div>
 			<p>this is all of the words from Herr Lehmann in a giant list. </p>
 			<div>
-				{words && words.map((word, i) => {
+				{words && Object.values(words).map((word, i) => {
 					return <Word key={word.question} word={word} />
 				})}
 			</div>
