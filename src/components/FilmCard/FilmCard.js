@@ -29,6 +29,8 @@ const useStyles = makeStyles({
   },
 });
 
+const filmClickHandler = (evt) => console.log(`film clicked!`, evt.target.title)
+
 export default function FilmCard(props) {
   const classes = useStyles();
 
@@ -38,6 +40,7 @@ export default function FilmCard(props) {
        	className={classes.media}
         image={props.film.img}
         title={props.film.name}
+        onClick={filmClickHandler}
       />
       <CardContent>
         <Typography className={classes.title}  color="textSecondary" gutterBottom>

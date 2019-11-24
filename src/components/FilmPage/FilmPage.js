@@ -1,22 +1,12 @@
 import React from "react";
+import PropTypes from 'prop-types'
 import './FilmPage.scss'
 import FilmCard from '../FilmCard/FilmCard'
-
-
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
 
-// import Card from '../Card/Card'
-// import Container from '@material-ui/core/Container';
-// import PropTypes from 'prop-types'
-// import Button from '@material-ui/core/Button';
-// import Box from '@material-ui/core/Box';
-// import Typography from '@material-ui/core/Typography';
 import { compose } from 'redux'
 import FilmPageContainerWrapper from '../../containers/FilmPageContainer/FilmPageContainer'
 
@@ -29,8 +19,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    width: 800,
-    // height: 450,
+    width: 800
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
@@ -56,50 +45,16 @@ let FilmPage = (props) => {
 		     </GridList>
 		   </div>
 	)
-	// return (
-	// 	<div>
-	// 		<h1>Select one or more films to add their words to the study material</h1>
-	// 		<div className='films'>
-				// { Object.values(props.films).map(( film, i ) => {
-				// 	return <FilmCard film={film} key={i} />
-				// })}
-	// 		</div>
-	// 	</div>
-	// )
 }
 
-
-/*
-{tileData.map(tile => (
-		         <GridListTile key={tile.img}>
-		           <img src={tile.img} alt={tile.title} />
-		           <GridListTileBar
-		             title={tile.title}
-		             subtitle={<span>by: {tile.author}</span>}
-		             actionIcon={
-		               <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
-		                 <InfoIcon />
-		               </IconButton>
-		             }
-		           />
-		         </GridListTile>
-		       ))}
-
-*/
-
-// const itemShape = {
-// 	question: PropTypes.string.isRequired,
-// 	answer: PropTypes.string.isRequired,
+// const filmShape = {
+// 	name: PropTypes.string.isRequired,
+// 	img: PropTypes.string.isRequired
 // }
 
 // FilmPage.propTypes = {
-// 	items: PropTypes.objectOf(PropTypes.shape(itemShape)).isRequired,
-// 	currentIndex: PropTypes.number.isRequired
+// 	films: PropTypes.arrayOf(PropTypes.shape(filmShape)).isRequired
 // }
-
-// const wrapperHigherOrderComponents = compose(FilmPageContainerWrapper)
-
-// export const FilmPageContainer = wrapperHigherOrderComponents(FilmPage)
 
 const wrapperHigherOrderComponents = compose(FilmPageContainerWrapper)
 

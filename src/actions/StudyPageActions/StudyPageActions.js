@@ -9,9 +9,7 @@ export const changeCurrentIndex = (changeNum) => {
 }
 
 const receiveCards = (words) => {
-	const filteredWords = {}
-
-	
+	const filteredWords = {}	
 }
 
 export const fetchCardsForFilms = (films) => {

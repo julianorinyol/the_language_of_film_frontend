@@ -1,31 +1,26 @@
+const mapArrayByField = (arr, field) => {
+	const res = {}
+	
+	arr.forEach(item => {
+		res[item[field]] = item
+	})
 
-const films = {
-	'herr_lehmann': {
-		name: 'Herr Lehmann',
-		selected: true,
-		img: '/images/herr_lehmann_portrait.jpg'
-	},
-	'fake_movie1': {
-		name: 'fake_movie1',
-		selected: false,
-		img: '/images/herr_lehmann_portrait.jpg'
-	},
-	'fake_movie2': {
-		name: 'fake_movie2',
-		selected: false,
-		img: '/images/herr_lehmann_portrait.jpg'
-	},
-	'fake_movie3': {
-		name: 'fake_movie3',
-		selected: false,
-		img: '/images/herr_lehmann_portrait.jpg'
-	},
+	return res
 }
 
-const initialState = { films }
-
-export default function FilmsReducer(state = initialState, action) {
+export default function FilmsReducer(state = {films:[]}, action) {
   switch (action.type) {
+	case 'UPDATE_FILMS':
+		const films = action.payload.map(rawFilm => {
+			return {
+				...rawFilm, 
+				selected: false
+			}	
+		})
+		const filmMap = mapArrayByField(films, 'name')
+
+		const newState = {...state, films: filmMap}
+		return newState
     default:
       return state
   }

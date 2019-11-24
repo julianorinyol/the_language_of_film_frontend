@@ -1,7 +1,7 @@
 
 import { connect } from 'react-redux'
 import React from 'react'
-import { selectFilm } from '../../actions/FilmActions/FilmActions'
+import { selectFilm, fetchFilms } from '../../actions/FilmActions/FilmActions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -12,13 +12,17 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     selectFilm: (film) => dispatch(selectFilm(film)),
+    fetchFilms: (film) => dispatch(fetchFilms()),
   }  
 }
 
 export default Component => {	
 	class FilmPageContainer extends React.Component {
+    componentWillMount() {
+      this.props.fetchFilms()
+    }
 		render() { 
-			return <Component {...this.props} />
+      return <Component {...this.props} />
 		}
 	}
 

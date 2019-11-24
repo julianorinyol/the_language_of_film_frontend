@@ -12,11 +12,11 @@ export const LanguageOfFilmService = {
 	findFilms() {
 		return axios.get(endpoints.v1.films)
 		.then(res => {
-			console.log(`RES`, res)
 			return res.data
 		})
 		.catch(err => {
-			console.error('HOLY SCHMOKES!', err.message)
+			console.error(`Error fetching films`, err.message)
+			throw err
 		})
 	}
 }
