@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Navigation = (props) => {
+export const Navigation = (props) => {
   const classes = useStyles();
   const { location } = props;
   const { pathname } = location;
@@ -37,11 +37,13 @@ const Navigation = (props) => {
   function handleChange(event, newValue) {
     setValue(newValue);
   }
+
+  const pathValue = value === '/' ? '/films/' : value
   
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Tabs value={value} onChange={handleChange}>
+        <Tabs value={pathValue} onChange={handleChange}>
           <Tab label="films" 
             value="/films/" 
             component={Link} 
@@ -66,6 +68,14 @@ const Navigation = (props) => {
       </AppBar>
     </div>
   );
+}
+
+const locationPropShape = {
+  pathname: PropTypes.oneOf(['/','/films/', '/study/', '/words/','/blacklist/']).isRequired
+}
+
+Navigation.propTypes = {
+  location: PropTypes.shape(locationPropShape)
 }
 
 export default withRouter(Navigation)  
