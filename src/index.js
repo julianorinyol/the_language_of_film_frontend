@@ -7,30 +7,22 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
-
-import { saveState, loadState }  from './helpers/localStorage'
-import throttle from 'lodash/throttle';
 import studyCards from './reducers/StudyCards'
 import FilmsReducer from './reducers/FilmsReducer'
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 
-const persistedState = loadState()
 const rootReducer = combineReducers({cards: studyCards, films: FilmsReducer})
 
 const loggerMiddleware = createLogger()
 
 let store = createStore(
   rootReducer,
-  persistedState,
+  {},
   applyMiddleware(
     thunkMiddleware, // lets us dispatch() functions
     loggerMiddleware // neat middleware that logs actions
   )
 )
-
-store.subscribe(throttle(() => {
-  saveState( store.getState() );
-}, 1000));
 
 const rootElement = document.getElementById('root')
 
@@ -40,8 +32,6 @@ ReactDOM.render(
   </Provider>,
   rootElement
 )
-
-// ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
