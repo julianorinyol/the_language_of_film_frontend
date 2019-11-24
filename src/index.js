@@ -4,18 +4,29 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import thunkMiddleware from 'redux-thunk'
+import { createLogger } from 'redux-logger'
+
 import { saveState, loadState }  from './helpers/localStorage'
 import throttle from 'lodash/throttle';
 import studyCards from './reducers/StudyCards'
 import FilmsReducer from './reducers/FilmsReducer'
-import { combineReducers } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 
 const persistedState = loadState()
 const rootReducer = combineReducers({cards: studyCards, films: FilmsReducer})
 
-let store = createStore(rootReducer, persistedState)
+const loggerMiddleware = createLogger()
+
+let store = createStore(
+  rootReducer,
+  persistedState,
+  applyMiddleware(
+    thunkMiddleware, // lets us dispatch() functions
+    loggerMiddleware // neat middleware that logs actions
+  )
+)
 
 store.subscribe(throttle(() => {
   saveState( store.getState() );
