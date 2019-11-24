@@ -1,4 +1,25 @@
 import Lehmann from '../data/herr_lehmann.json'
+import axios from 'axios'
+const host = process.env.REACT_APP_API_HOST
+
+const endpoints = {
+	v1: {
+		films: `${host}/api/v1/films`
+	}
+}
+
+export const LanguageOfFilmService = {
+	findFilms() {
+		return axios.get(endpoints.v1.films)
+		.then(res => {
+			console.log(`RES`, res)
+			return res.data
+		})
+		.catch(err => {
+			console.error('HOLY SCHMOKES!', err.message)
+		})
+	}
+}
 
 const mapDataToFilm = {
 	'Herr Lehmann': Lehmann,
