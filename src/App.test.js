@@ -1,9 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from './App';
+import { mount, shallow } from './test/config/enzyme'
+import {createMockStore, wrapComponentInProvider} from './test/config/testHelpers'
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+const store = {}
+
+const mockStore = createMockStore(store)
+
+describe('<App />', () => {  
+  it('should mount', () => {
+    const wrap = shallow(
+      wrapComponentInProvider(
+        <App />, 
+        mockStore
+      )
+    )
+    expect(wrap.exists()).toBeTruthy()
+  })
+})

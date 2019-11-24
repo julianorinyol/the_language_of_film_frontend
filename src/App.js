@@ -37,7 +37,6 @@ function AppRouter(props) {
           path="/words/" 
           render={() => {
             return <WordsPageContainer />
-            // return <div>bla</div>
           }} 
         />
         <Route 
