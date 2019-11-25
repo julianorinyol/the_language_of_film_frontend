@@ -37,7 +37,7 @@ export default function FilmCard(props) {
   return (
     <Card className={classes.card}>
        <CardMedia
-       	className={classes.media}
+       	className={'FilmCard ' + classes.media}
         image={props.film.img}
         title={props.film.name}
         onClick={filmClickHandler}
