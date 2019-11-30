@@ -1,4 +1,4 @@
-export const defaultBlacklist = [
+const blackList = [
 	'wastl',
 	'wwwsubtitledborg',
 	'hier',
@@ -1469,3 +1469,4 @@ export const defaultBlacklist = [
 	'aufgenommen',
 	'stelle',
 ]
+export const defaultBlacklist = [...new Set(blackList)];

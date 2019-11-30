@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { changeCurrentIndex, fetchCardsForFilms } from '../../actions/StudyPageActions/StudyPageActions'
-// import { getSelectedFilms } from '../../actions/FilmActions/FilmActions'
+import { changeCurrentIndex, fetchCards } from '../../actions/StudyPageActions/StudyPageActions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -13,8 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-  	fetchCardsForFilms: (films) => {
-  		return dispatch(fetchCardsForFilms(films))
+  	fetchCards: (films) => {
+		return dispatch(fetchCards())
   	},
     changeItemIndex: (num) => dispatch(changeCurrentIndex(num))
   }
@@ -23,8 +22,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default Component => {
 	class StudyPageContainer extends React.Component {
 		componentDidMount() {
-      const selectedFilms = Object.values(this.props.films).filter(film => film.selected)
-			this.props.fetchCardsForFilms(selectedFilms)
+			this.props.fetchCards()
 		}
 
 		render() { 
