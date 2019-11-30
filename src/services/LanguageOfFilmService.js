@@ -1,11 +1,26 @@
-import Lehmann from '../data/herr_lehmann.json'
 import axios from 'axios'
+import { defaultBlacklist } from '../constants'
+
 const host = process.env.REACT_APP_API_HOST
 
 const endpoints = {
 	v1: {
-		films: `${host}/api/v1/films`
+		films: `${host}/api/v1/films`,
+		words: `${host}/api/v1/words`
 	}
+}
+
+const removeBlackListed = (words) => {	
+	const result = {}
+	for(const wordKey in words) {
+		const wordInfo = words[wordKey]
+		if(defaultBlacklist.indexOf(wordInfo.word.trim()) !== -1) {
+			continue
+		} else {
+			result[wordKey] = wordInfo
+		}
+	}
+	return result
 }
 
 export const LanguageOfFilmService = {
@@ -18,28 +33,16 @@ export const LanguageOfFilmService = {
 			console.error(`Error fetching films`, err.message)
 			throw err
 		})
+	},
+	findWords() {
+		return axios.get(endpoints.v1.words)
+		.then(res => {
+			const whitelistedWords = removeBlackListed(res.data.words)
+			return whitelistedWords
+		})
+		.catch(err => {
+			console.error(`Error fetching words`, err.message)
+			throw err
+		})
 	}
-}
-
-const mapDataToFilm = {
-	'Herr Lehmann': Lehmann,
-	'fake_movie1': {
-		words: {
-			"verdammte": {
-			  "word": "verdammte",
-			  "english": " damned",
-			  "examples": "[\"blabla fake\", \"Na ja jetzt auch egal\\nverdammte Scheiße\", \"Nein das ist nicht mein Hund\\nverdammte Scheiße\", \"Ich liebe dich Verdammte Scheiße\", \"Mach ich sowieso nie\\nAber ich rege mich auf verdammte Scheiße\"]"
-			},
-			"scheißhund": {
-			  "word": "scheißhund",
-			  "english": "fucking fog",
-			  "examples": "[\"test 2\", \"test 3\"]"
-			},	
-
-		}	
-	}
-}
-
-export const fetchWordsForFilm = (film) => {
-	return mapDataToFilm[film.name].words
 }
