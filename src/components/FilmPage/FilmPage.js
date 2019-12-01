@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from 'prop-types'
 import './FilmPage.scss'
 import FilmCard from '../FilmCard/FilmCard'
 import { makeStyles } from '@material-ui/core/styles';
@@ -46,15 +45,6 @@ let FilmPage = (props) => {
 		   </div>
 	)
 }
-
-// const filmShape = {
-// 	name: PropTypes.string.isRequired,
-// 	img: PropTypes.string.isRequired
-// }
-
-// FilmPage.propTypes = {
-// 	films: PropTypes.arrayOf(PropTypes.shape(filmShape)).isRequired
-// }
 
 const wrapperHigherOrderComponents = compose(FilmPageContainerWrapper)
 

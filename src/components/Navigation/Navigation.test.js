@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigation } from './'
+import { Navigation } from './Navigation'
 import { shallow, mount } from '../../test/config/enzyme'
 import { MemoryRouter } from 'react-router-dom'
 

@@ -13,14 +13,15 @@ const convertWord = (wordInfo ) => {
     }
 }
 
-function convertWordsToCard(words) {
-  let converted = {}
-  for(const wordKey in words) {
-  	const wordInfo = words[wordKey]
-	converted[wordInfo.word] = convertWord(wordInfo)
-  }
+const convertWordsToCard = (words) => {
+    const converted = {}
 
-  return converted
+    for(const wordKey in words) {
+        const wordInfo = words[wordKey]
+        converted[wordInfo.word] = convertWord(wordInfo)
+    }
+
+    return converted
 }
 
 export const StudyCardService = {
@@ -30,5 +31,5 @@ export const StudyCardService = {
                 const cards = convertWordsToCard(words)
                 return cards
             })
-	}
+    }
 }

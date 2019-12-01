@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect, BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
-import Navigation from './components/Navigation'
+import Navigation from './components/Navigation/Navigation'
 import { WordsPageContainer } from './components/WordsPage/WordsPage'
 import { StudyPageContainer } from './components/StudyPage/StudyPage'
 import { FilmPageContainer } from './components/FilmPage/FilmPage'

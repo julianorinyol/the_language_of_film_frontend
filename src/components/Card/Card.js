@@ -9,10 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types'
 
 const useStyles = makeStyles({
-  card: {
-    // minWidth: 275,
-    // maxWidth: 700,
-  },
+  card: {},
   title: {
     fontSize: 14,
   },
@@ -23,9 +20,6 @@ const useStyles = makeStyles({
     padding: '50px 50px',
     display: 'flex',
     flexDirection: 'column',
-    // justifyContent: 'space-between',
-    // alignItems: 'center',
-    // minHeight: 300
   },
   topBox: {
     borderBottom: '1px solid grey'
@@ -95,11 +89,7 @@ let SimpleCard = (props) => {
             <Box>
               { showExamples ? props.item.examples.map((example, i) => {
                   return <Typography className={classes.exampleText} key={i}>* {example}</Typography>
-                }) : ( ''
-                  // <CardActions>
-                  //   <Button onClick={(e)=> setShowExamples(true)} color="primary" size="small">Show Examples</Button>
-                  // </CardActions>
-                )
+                }) : ( '' )
               }
             </Box>
           </Box>
@@ -108,9 +98,6 @@ let SimpleCard = (props) => {
   );
 }
 
-/*
-
-*/
 const itemShape = {
   question: PropTypes.string.isRequired,
   answer: PropTypes.string.isRequired,

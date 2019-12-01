@@ -7,13 +7,9 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
 	card: {
-    // minWidth: 150,
-    // maxWidth: 150,
-    // height: 265
   },
   media: {
     height: 0,
-    // paddingTop: '56.25%', // 16:9
     paddingTop: '143%', // trial and error value :/
   },
   bullet: {

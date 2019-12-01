@@ -72,7 +72,6 @@ let StudyPage = (props) => {
 		    	<Card item={currentItem} />
 		    	<Button onClick={(e)=> changeItemIndex(-1)} color="primary" size="small">Previous</Button>
 		    	<Button onClick={(e)=> changeItemIndex(1)} color="primary" size="small">Next</Button>
-		    	{/*<Typography>{currentItemIndex + 1} / {total}</Typography>*/}
 		    	<Typography>{props.currentIndex + 1} / {total}</Typography>
 		    </Box>
 		  </Container>
