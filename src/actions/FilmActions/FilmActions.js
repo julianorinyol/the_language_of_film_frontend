@@ -1,4 +1,4 @@
-import { LanguageOfFilmService } from '../../services/LanguageOfFilmService' 
+import { LanguageOfFilmService } from '../../services/LanguageOfFilmService/LanguageOfFilmService.js' 
 
 const UPDATE_FILMS = 'UPDATE_FILMS'
 

@@ -1,4 +1,4 @@
-import { StudyCardService } from '../../services/StudyCardService'
+import { StudyCardService } from '../../services/StudyCardService/StudyCardService.js'
 
 export const changeCurrentIndex = (changeNum) => {
 	return {
