@@ -1,4 +1,4 @@
-const blackList = [
+export const blackList = [
 	'wastl',
 	'wwwsubtitledborg',
 	'hier',

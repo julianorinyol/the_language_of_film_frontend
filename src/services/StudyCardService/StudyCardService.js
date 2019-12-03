@@ -1,4 +1,4 @@
-import { LanguageOfFilmService } from './LanguageOfFilmService'
+import { LanguageOfFilmService } from '../LanguageOfFilmService/LanguageOfFilmService.js'
 /*
  * TODO - move all of this functionality to backend. 
  * there should be a microservice just for the flash card app functionality

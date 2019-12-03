@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { defaultBlacklist } from '../constants'
+import { defaultBlacklist } from '../../constants'
+import { removeKeysFromObject } from '../../helpers/ObjectHelpers/ObjectHelpers'
 
 const host = process.env.REACT_APP_API_HOST
 
@@ -10,19 +11,6 @@ const endpoints = {
 	}
 }
 
-const removeBlackListed = (words) => {	
-	const result = {}
-	for(const wordKey in words) {
-		const wordInfo = words[wordKey]
-		if(defaultBlacklist.indexOf(wordInfo.word.trim()) !== -1) {
-			continue
-		} else {
-			result[wordKey] = wordInfo
-		}
-	}
-	return result
-}
-
 export const LanguageOfFilmService = {
 	findFilms() {
 		return axios.get(endpoints.v1.films)
@@ -30,18 +18,18 @@ export const LanguageOfFilmService = {
 			return res.data
 		})
 		.catch(err => {
-			console.error(`Error fetching films`, err.message)
+			console.error(`Error fetching films ${err.message}`)
 			throw err
 		})
 	},
 	findWords() {
 		return axios.get(endpoints.v1.words)
 		.then(res => {
-			const whitelistedWords = removeBlackListed(res.data.words)
+			const whitelistedWords = removeKeysFromObject(res.data.words, defaultBlacklist)
 			return whitelistedWords
 		})
 		.catch(err => {
-			console.error(`Error fetching words`, err.message)
+			console.error(`Error fetching words ${err.message}`)
 			throw err
 		})
 	}
