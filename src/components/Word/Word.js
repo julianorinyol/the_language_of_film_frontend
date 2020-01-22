@@ -29,7 +29,7 @@ const Word = (props) => {
 			<span className='word-question'>{ word.question }</span>
 		
 			{ open ? 
-				<span className='word-answer'>{word.answer}</span>
+				<pre className='word-answer'>{word.answer}</pre>
 				: (
 					<Button onClick={(e)=> handleChange(e, true)} variant="contained" color="primary" className={classes.button}>
 					   See Answer

@@ -74,9 +74,9 @@ let SimpleCard = (props) => {
           <Box className={classes.bottomBox}>
             <Box className={classes.bottomLeft}>
               { showAnswer ? 
-                (<Typography color="textPrimary" gutterBottom>
+                (<pre>
                   {props.item.answer}
-                </Typography>)
+                  </pre>)
                 : (
                   <CardActions>
                     <Button onClick={(e)=> showBoth()} color="primary" size="small">Show Answer</Button>
@@ -87,7 +87,7 @@ let SimpleCard = (props) => {
           
 
             <Box>
-              { showExamples ? props.item.examples.map((example, i) => {
+              { showExamples && props.item.examples ? props.item.examples.map((example, i) => {
                   return <Typography className={classes.exampleText} key={i}>* {example}</Typography>
                 }) : ( '' )
               }
