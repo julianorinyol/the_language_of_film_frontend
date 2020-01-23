@@ -46,7 +46,7 @@
     ]
   },
   "engines": {
-    "node": "11.15.0"
+    "node": "^12"
   },
   "devDependencies": {
     "enzyme": "^3.10.0",
