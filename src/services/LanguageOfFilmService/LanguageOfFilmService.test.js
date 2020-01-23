@@ -14,23 +14,21 @@ const testData = {
         }
     ],
     words: {
-        "words": {
-          "foo": {
-            "word": "foo",
-            "english": "eng foo",
-            "examples": "['foo is like foo' ]"
-          },
-          "bar": {
-            "word": "bar",
-            "english": "eng bar",
-            "examples": "[]"
-          },
-          "baz": {
-            "word": "baz",
-            "english": "eng baz",
-            "examples": "[]"
-          }
-        }
+      "foo": {
+        "word": "foo",
+        "language": "english",
+        "phrases": "['foo is like foo' ]"
+      },
+      "bar": {
+        "word": "bar",
+        "language": "eng bar",
+        "phrases": "[]"
+      },
+      "baz": {
+        "word": "baz",
+        "language": "eng baz",
+        "phrases": "[]"
+      }
     }
 }
 
@@ -82,7 +80,8 @@ describe('LanguageOfFilmService', () => {
             return done()
         })
     })
-
+    // todo I dont know if this tested is needed anymore. as the backend is now doing the transforming
+    // also should add a test for findCards. 
     describe('findWords', () => {
         it('should call axios.get with the correct url and it should return the data param from returned from axios.get. with blacklist items removed', async done => {
             expect.assertions(3)
@@ -104,8 +103,8 @@ describe('LanguageOfFilmService', () => {
             const expected = {
                 "baz": {
                     "word": "baz",
-                    "english": "eng baz",
-                    "examples": "[]"
+                    "language": "eng baz",
+                    "phrases": "[]"
                 }
             }
 
