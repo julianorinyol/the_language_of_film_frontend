@@ -8,6 +8,13 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types'
 
+export const classNames = {
+  card: `studycard`,
+  questionText: `StudyCard-question`,
+  showAnswerButton: `show-answer--button`,
+  answerText: `answer-text`
+} 
+
 const useStyles = makeStyles({
   card: {},
   title: {
@@ -64,22 +71,22 @@ let SimpleCard = (props) => {
   }
 
   return (
-      <Card tabIndex="0" onKeyDown={onKeyDown} className={classes.card}>
+      <Card tabIndex="0" onKeyDown={onKeyDown} className={classes.card + ` ${classNames.card}`}>
         <CardContent className={classes.cardContent}>
           <Box className={classes.topBox}>
-            <Typography className={classes.title} color="textSecondary" gutterBottom>
+            <Typography className={classes.title + ` ${classNames.questionText}`} color="textSecondary" gutterBottom>
               {props.item.question}
             </Typography>
           </Box>
           <Box className={classes.bottomBox}>
             <Box className={classes.bottomLeft}>
               { showAnswer ? 
-                (<pre>
+                (<pre className={classNames.answerText}>
                   {props.item.answer}
                   </pre>)
                 : (
                   <CardActions>
-                    <Button onClick={(e)=> showBoth()} color="primary" size="small">Show Answer</Button>
+                    <Button className={classNames.showAnswerButton} onClick={(e)=> showBoth()} color="primary" size="small">Show Answer</Button>
                   </CardActions>
                 )
               }

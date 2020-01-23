@@ -27,6 +27,11 @@ const useStyles = makeStyles({
   }
 });
 
+export const classNames = {
+	previousButton: `study-page--previous-button`,
+	nextButton: `study-page--next-button`
+} 
+
 let StudyPage = (props) => {
 	const classes = useStyles();
 	
@@ -70,8 +75,8 @@ let StudyPage = (props) => {
 		  		  	)
 		  			}
 		    	<Card item={currentItem} />
-		    	<Button onClick={(e)=> changeItemIndex(-1)} color="primary" size="small">Previous</Button>
-		    	<Button onClick={(e)=> changeItemIndex(1)} color="primary" size="small">Next</Button>
+		    	<Button className={classNames.previousButton} onClick={(e)=> changeItemIndex(-1)} color="primary" size="small">Previous</Button>
+		    	<Button className={classNames.nextButton} onClick={(e)=> changeItemIndex(1)} color="primary" size="small">Next</Button>
 		    	<Typography>{props.currentIndex + 1} / {total}</Typography>
 		    </Box>
 		  </Container>
