@@ -1,3 +1,4 @@
+import axios from 'axios'
 const puppeteer = require('puppeteer');
 const studyPageUrl = process.env.REACT_APP_FRONT_END_URL + '/study'
 const headless = (process.env.REACT_APP_END_TO_END_TESTS_HEADLESS === 'true')
@@ -34,6 +35,11 @@ var browser;
 describe('StudyPage', () => {
 
   beforeAll(async () => {
+    const port = 3000
+    await axios.get(`http://localhost:${port}`)
+    .catch(err => {
+      throw new Error(`Server not running: ${err.message}`)
+    })
 
     console.log('puppeteer options:', puppeteerOptions )
     browser = await puppeteer.launch(puppeteerOptions);
