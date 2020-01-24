@@ -13,3 +13,6 @@ export const wrapComponentInProvider = (component, store) => (
       { component }
     </Provider>
 )
+
+
+export const getClass = klass => `.${klass}`

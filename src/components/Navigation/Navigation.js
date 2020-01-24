@@ -8,6 +8,10 @@ import Typography from '@material-ui/core/Typography';
 import { withRouter } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
+export const classNames = {
+  navigationTab: 'navigation--tab'
+}
+
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
@@ -45,21 +49,25 @@ export const Navigation = (props) => {
       <AppBar position="static">
         <Tabs value={pathValue} onChange={handleChange}>
           <Tab label="films" 
+            className={classNames.navigationTab}
             value="/films/" 
             component={Link} 
             to={'/films/'} />
           />
           <Tab label="study" 
+            className={classNames.navigationTab}
             value="/study/" 
             component={Link} 
             to={'/study/'} />
           />
           <Tab label="words" 
+            className={classNames.navigationTab}
             value="/words/" 
             component={Link}
             to={'/words/'} />
           />
           <Tab label="blacklist" 
+            className={classNames.navigationTab}
             value="/blacklist/" 
             component={Link}
             to={'/blacklist/'} />
