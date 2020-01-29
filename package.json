@@ -53,6 +53,7 @@
     "globalTeardown": "<rootDir>/global-teardown.js"
   },
   "devDependencies": {
+    "cors": "^2.8.5",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "jest-dev-server": "^4.4.0",
