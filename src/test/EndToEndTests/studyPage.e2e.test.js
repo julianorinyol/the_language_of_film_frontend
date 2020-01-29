@@ -1,31 +1,22 @@
+import { testApi, getPuppeteerOptions,  getClass } from '../config/testHelpers'
 const puppeteer = require('puppeteer');
+const getBrowser = () => puppeteer.launch(getPuppeteerOptions())  
+
 const studyPageUrl = process.env.REACT_APP_FRONT_END_URL + '/study'
-const headless = (process.env.REACT_APP_END_TO_END_TESTS_HEADLESS === 'true')
-const puppeteerDelay = parseInt(process.env.REACT_APP_PUPPETEER_DELAY) // in milliseconds
 
 const studyPageClasses = require('../../components/StudyPage/StudyPage').classNames
 const studyCardClasses = require('../../components/Card/Card').classNames
-
-console.log(`studyPageClasses`, studyPageClasses)
-
-const puppeteerOptions = {
-  headless,
-  slowMo: puppeteerDelay
-}
-
-// just prepends the .
-const getClass = className => `.${className}`
 
 // todo: find a dynamic way to seed the test environment with shared sample data
 // between back and front end repos
 const sampleQuestionData = [
   {
-    question: 'maldita',
-    answer: 'verdammte -  german' // this is just part of the answer. using toContain
-  },
-  {
     question: 'verdammte',
     answer: 'damned -  english' // this is just part of the answer. using toContain
+  },
+  {
+    question: 'maldita',
+    answer: 'verdammte -  german' // this is just part of the answer. using toContain
   },
 ]
 
@@ -34,9 +25,8 @@ var browser;
 describe('StudyPage', () => {
 
   beforeAll(async () => {
-
-    console.log('puppeteer options:', puppeteerOptions )
-    browser = await puppeteer.launch(puppeteerOptions);
+    await testApi()
+    browser = await getBrowser()
   })
 
   afterAll(async () => {
