@@ -2,8 +2,8 @@ import { LanguageOfFilmService } from '../../services/LanguageOfFilmService/Lang
 
 const UPDATE_FILMS = 'UPDATE_FILMS'
 
-export const fetchFilms = () => async dispatch => {
-	return LanguageOfFilmService.findFilms()
+export const fetchFilms = () => async (dispatch, getState) => {
+	return LanguageOfFilmService.findFilms(getState().token)
 	.then((films) => {
 		return dispatch({
 			type: UPDATE_FILMS,
