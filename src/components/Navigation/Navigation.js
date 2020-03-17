@@ -66,6 +66,12 @@ export const Navigation = (props) => {
               component={Link} 
               to={'/study/'} />
             />
+            <Tab label="vocabulary" 
+              className={classNames.navigationTab}
+              value="/vocabulary/" 
+              component={Link} 
+              to={'/vocabulary/'} />
+            />
             <Tab label="words" 
               className={classNames.navigationTab}
               value="/words/" 

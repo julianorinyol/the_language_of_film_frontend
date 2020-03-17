@@ -10,6 +10,7 @@ const endpoints = {
 		words: `${host}/api/v1/words`,
 		cards: `${host}/api/v1/cards`,
 		login: `${host}/api/v1/login`,
+		reviews: `${host}/api/v1/reviews/`,
 	}
 }
 // curl --header "Content-Type: application/json" \
@@ -35,7 +36,6 @@ export const LanguageOfFilmService = {
 		    'Authorization': `Bearer ${token}`
 		  }
 		}
-		console.log(`options`, options)
 
 		return axios.get(endpoints.v1.films, options)
 		.then(res => {
@@ -65,6 +65,22 @@ export const LanguageOfFilmService = {
 		})
 		.catch(err => {
 			console.error(`Error fetching cards ${err.message}`)
+			throw err
+		})
+	},
+	addReview(reviewData, token) {
+		const options = {
+		  headers: {
+		    'Authorization': `Bearer ${token}`
+		  }
+		}
+
+		return axios.post(endpoints.v1.reviews, reviewData, options)
+		.then(res => {
+			return res.data
+		})
+		.catch(err => {
+			console.error(`Error fetching films ${err.message}`)
 			throw err
 		})
 	}

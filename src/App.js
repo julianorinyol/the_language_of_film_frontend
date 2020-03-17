@@ -4,6 +4,8 @@ import './App.css';
 import Navigation from './components/Navigation/Navigation'
 import { WordsPageContainer } from './components/WordsPage/WordsPage'
 import { StudyPageContainer } from './components/StudyPage/StudyPage'
+import { VocabularyPageContainer } from './components/VocabularyPage/VocabularyPage'
+
 import { FilmPageContainer } from './components/FilmPage/FilmPage'
 import { ConnectedLoginPage } from './components/LoginPage/LoginPage'
 import BlacklistPage from './components/BlacklistPage/BlacklistPage'
@@ -11,14 +13,6 @@ import { defaultBlacklist } from './constants'
 import { connect } from 'react-redux'
 import { logout } from './actions/LoginActions/LoginActions'
 import { ConnectedProtectedRoute } from './components/ProtectedRoute/ProtectedRoute'
-const mapStateToProps = (state, ownProps) => {
-  return {
-    token: state.token,
-  }  
-}
-
-
-
 
 function AppRouter(props) {
   return (
@@ -53,6 +47,11 @@ function AppRouter(props) {
           }} 
         />
         <ConnectedProtectedRoute 
+          path="/vocabulary/" 
+        >
+          <VocabularyPageContainer />
+        </ConnectedProtectedRoute>
+        <ConnectedProtectedRoute 
           path="/study/" 
         >
           <StudyPageContainer message="These are all of the words in the german subtitle file for the film Herr Lehmann. Some of the translations are wrong:) \n and some of the words came out of the script funny" />
@@ -73,6 +72,12 @@ function AppRouter(props) {
       </div>
     </Router>
   );
+}
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    token: state.token,
+  }  
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
