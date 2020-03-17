@@ -46,7 +46,7 @@
     ]
   },
   "engines": {
-    "node": "^12"
+    "node": "^13.10.1"
   },
   "jest": {
     "globalSetup": "<rootDir>/global-setup.js",

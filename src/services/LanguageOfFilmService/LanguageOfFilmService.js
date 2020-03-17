@@ -8,13 +8,36 @@ const endpoints = {
 	v1: {
 		films: `${host}/api/v1/films`,
 		words: `${host}/api/v1/words`,
-		cards: `${host}/api/v1/cards`
+		cards: `${host}/api/v1/cards`,
+		login: `${host}/api/v1/login`,
 	}
 }
+// curl --header "Content-Type: application/json" \
+//   --request POST \
+//   --data '{"email":"julian@bla.com","password":"password123"}' \
+  
+
 
 export const LanguageOfFilmService = {
-	findFilms() {
-		return axios.get(endpoints.v1.films)
+	login(email, password) {
+		return axios.post(endpoints.v1.login, {email, password})
+		.then(res => {
+			return res.data.token
+		})
+		.catch(err => {
+			console.error(`Error fetching films ${err.message}`)
+			throw err
+		})
+	},
+	findFilms(token) {
+		const options = {
+		  headers: {
+		    'Authorization': `Bearer ${token}`
+		  }
+		}
+		console.log(`options`, options)
+
+		return axios.get(endpoints.v1.films, options)
 		.then(res => {
 			return res.data
 		})

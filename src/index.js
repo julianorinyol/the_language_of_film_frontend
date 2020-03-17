@@ -9,20 +9,30 @@ import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import studyCards from './reducers/StudyCards'
 import FilmsReducer from './reducers/FilmsReducer'
+import TokenReducer from './reducers/TokenReducer'
 import { createStore, applyMiddleware, combineReducers } from 'redux'
-
-const rootReducer = combineReducers({cards: studyCards, films: FilmsReducer})
+import { loadState, saveState } from './helpers/localStorage'
+const rootReducer = combineReducers({cards: studyCards, films: FilmsReducer, token: TokenReducer})
 
 const loggerMiddleware = createLogger()
 
+// persisting only the jwt token currently
+const persistedState = loadState() || {}
+
 let store = createStore(
   rootReducer,
-  {},
+  persistedState,
   applyMiddleware(
     thunkMiddleware, // lets us dispatch() functions
     loggerMiddleware // neat middleware that logs actions
   )
 )
+
+store.subscribe(() => {
+   saveState({
+    token: store.getState().token
+  });
+})
 
 const rootElement = document.getElementById('root')
 
