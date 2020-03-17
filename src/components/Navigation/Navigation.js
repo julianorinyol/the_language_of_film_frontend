@@ -2,11 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { withRouter } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
+
 
 export const classNames = {
   navigationTab: 'navigation--tab'
@@ -43,47 +47,61 @@ export const Navigation = (props) => {
   }
 
   const pathValue = value === '/' ? '/films/' : value
-  
+  const isLoggedIn = !!props.token;
   return (
     <div className={classes.root}>
+
       <AppBar position="static">
-        <Tabs value={pathValue} onChange={handleChange}>
-          <Tab label="films" 
-            className={classNames.navigationTab}
-            value="/films/" 
-            component={Link} 
-            to={'/films/'} />
-          />
-          <Tab label="study" 
-            className={classNames.navigationTab}
-            value="/study/" 
-            component={Link} 
-            to={'/study/'} />
-          />
-          <Tab label="words" 
-            className={classNames.navigationTab}
-            value="/words/" 
-            component={Link}
-            to={'/words/'} />
-          />
-          <Tab label="blacklist" 
-            className={classNames.navigationTab}
-            value="/blacklist/" 
-            component={Link}
-            to={'/blacklist/'} />
-          />
-        </Tabs>
+        <Toolbar>
+          <Tabs value={pathValue} onChange={handleChange}>
+            (isLoggedIn ? <Tab label="films" 
+              className={classNames.navigationTab}
+              value="/films/" 
+              component={Link} 
+              to={'/films/'} />
+            /> : "")
+            <Tab label="study" 
+              className={classNames.navigationTab}
+              value="/study/" 
+              component={Link} 
+              to={'/study/'} />
+            />
+            <Tab label="words" 
+              className={classNames.navigationTab}
+              value="/words/" 
+              component={Link}
+              to={'/words/'} />
+            />
+            <Tab label="blacklist" 
+              className={classNames.navigationTab}
+              value="/blacklist/" 
+              component={Link}
+              to={'/blacklist/'} />
+            />
+          </Tabs>
+
+          <Button>
+            <Link to={!isLoggedIn ? "/login/" : "/logout/"} color="inherit">{!isLoggedIn ? "Login" : "Logout"}
+            </Link>
+           </Button>
+        </Toolbar>
       </AppBar>
     </div>
   );
 }
 
+const mapStateToProps = (state, ownProps) => {
+  return {
+    token: state.token,
+  }  
+}
+
 const locationPropShape = {
-  pathname: PropTypes.oneOf(['/','/films/', '/study/', '/words/','/blacklist/']).isRequired
+  pathname: PropTypes.oneOf(['/','/films/', '/study/', '/words/','/blacklist/','/logout/','/logout','/login/', '/login']).isRequired
 }
 
 Navigation.propTypes = {
   location: PropTypes.shape(locationPropShape)
 }
 
-export default withRouter(Navigation)  
+export default withRouter(connect(mapStateToProps)(Navigation)) 
