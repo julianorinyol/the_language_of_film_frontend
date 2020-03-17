@@ -11,12 +11,12 @@ const studyCardClasses = require('../../components/Card/Card').classNames
 // between back and front end repos
 const sampleQuestionData = [
   {
-    question: 'verdammte',
-    answer: 'damned -  english' // this is just part of the answer. using toContain
-  },
-  {
     question: 'maldita',
     answer: 'verdammte -  german' // this is just part of the answer. using toContain
+  },
+  {
+    question: 'verdammte',
+    answer: 'damned -  english' // this is just part of the answer. using toContain
   },
 ]
 
