@@ -1,7 +1,7 @@
 
 import { LanguageOfFilmService } from '../../services/LanguageOfFilmService/LanguageOfFilmService.js' 
 
-const SUBMIT_REVIEW = 'SUBMIT_REVIEW'
+// const SUBMIT_REVIEW = 'SUBMIT_REVIEW'
 
 export const submitReview = (reviewData) => async (dispatch, getState) => {
 	return LanguageOfFilmService.addReview(reviewData, getState().token)
