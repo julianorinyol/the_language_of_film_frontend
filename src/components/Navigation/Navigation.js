@@ -103,7 +103,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const locationPropShape = {
-  pathname: PropTypes.oneOf(['/','/films/', '/study/', '/words/','/blacklist/','/logout/','/logout','/login/', '/login']).isRequired
+  pathname: PropTypes.oneOf(['/','/films/', '/vocabulary/', '/study/', '/words/','/blacklist/','/logout/','/logout','/login/', '/login']).isRequired
 }
 
 Navigation.propTypes = {
