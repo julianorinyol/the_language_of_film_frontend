@@ -45,8 +45,13 @@ export const Navigation = (props) => {
   function handleChange(event, newValue) {
     setValue(newValue);
   }
+  const tabRoutes = ['/films/', '/study/', '/vocabulary/', '/words/','/blacklist/']
+  const isTabRoute = tabRoutes.includes(value)
+  const homeTab = '/films/'
+  
+  const pathValue = isTabRoute ? value  : homeTab
 
-  const pathValue = value === '/' ? '/films/' : value
+
   const isLoggedIn = !!props.token;
   return (
     <div className={classes.root}>
@@ -100,14 +105,6 @@ const mapStateToProps = (state, ownProps) => {
   return {
     token: state.token,
   }  
-}
-
-const locationPropShape = {
-  pathname: PropTypes.oneOf(['/','/films/', '/vocabulary/', '/study/', '/words/','/blacklist/','/logout/','/logout','/login/', '/login']).isRequired
-}
-
-Navigation.propTypes = {
-  location: PropTypes.shape(locationPropShape)
 }
 
 export default withRouter(connect(mapStateToProps)(Navigation)) 

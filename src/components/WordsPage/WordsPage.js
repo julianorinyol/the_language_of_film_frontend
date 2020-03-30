@@ -2,12 +2,15 @@ import React from 'react'
 import Word from '../Word/Word'
 import { compose } from 'redux'
 import WordsContainer from '../../containers/WordsContainer'
+import { Link } from 'react-router-dom';
+
 
 const WordsPage = (props) => {
 	const { words } = props
 	return (
 		<div>
-			<p>this is all of the words from Herr Lehmann in a giant list. </p>
+			<Link to="/words/bulkadd">bulk add words</Link>
+			<p> words you've added to learn</p>
 			<div>
 				{words && Object.values(words).map((word, i) => {
 					return <Word key={word.question} word={word} />

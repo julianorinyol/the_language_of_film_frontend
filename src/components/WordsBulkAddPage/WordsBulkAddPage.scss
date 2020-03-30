@@ -1,0 +1,5 @@
+.example-csv {
+	/* preserve the newlines in the csv example */ 
+	/* https://stackoverflow.com/questions/9492249/render-a-string-in-html-and-preserve-spaces-and-linebreaks */
+    white-space: pre-line;
+}

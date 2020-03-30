@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import ListSubheader from '@material-ui/core/ListSubheader';
+import { Link } from 'react-router-dom';
 
 import { compose } from 'redux'
 import FilmPageContainerWrapper from '../../containers/FilmPageContainer/FilmPageContainer'
@@ -30,7 +31,9 @@ let FilmPage = (props) => {
   const classes = useStyles();
 	return (
 		<div className={classes.root}>
+		<Link to="/films/new">Add Film</Link>
 		     <GridList spacing={20} cols={4} cellHeight={500} className={classes.gridList}>
+
 		       <GridListTile key="Subheader" cols={4} style={{ height: 'auto' }}>
 		         <ListSubheader component="div">Films</ListSubheader>
 		       </GridListTile>

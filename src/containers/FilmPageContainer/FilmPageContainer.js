@@ -1,7 +1,7 @@
 
 import { connect } from 'react-redux'
 import React from 'react'
-import { selectFilm, fetchFilms } from '../../actions/FilmActions/FilmActions'
+import { selectFilm, fetchFilms, addFilm } from '../../actions/FilmActions/FilmActions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -13,6 +13,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     selectFilm: (film) => dispatch(selectFilm(film)),
     fetchFilms: (film) => dispatch(fetchFilms()),
+    addFilm: (film) => dispatch(addFilm(film)),
   }  
 }
 

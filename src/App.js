@@ -7,6 +7,9 @@ import { StudyPageContainer } from './components/StudyPage/StudyPage'
 import { VocabularyPageContainer } from './components/VocabularyPage/VocabularyPage'
 
 import { FilmPageContainer } from './components/FilmPage/FilmPage'
+import { NewFilmPageContainer } from './components/NewFilmPage/NewFilmPage'
+import { WordsBulkAddPage } from './components/WordsBulkAddPage/WordsBulkAddPage'
+
 import { ConnectedLoginPage } from './components/LoginPage/LoginPage'
 import BlacklistPage from './components/BlacklistPage/BlacklistPage'
 import { defaultBlacklist } from './constants'
@@ -27,7 +30,8 @@ function AppRouter(props) {
           }} 
         />
         <ConnectedProtectedRoute 
-          path="/films/" 
+          path="/films/"
+          exact
           render={() => {
             return <FilmPageContainer />
           }} >
@@ -50,18 +54,37 @@ function AppRouter(props) {
           path="/vocabulary/" 
         >
           <VocabularyPageContainer />
+
         </ConnectedProtectedRoute>
+        
         <ConnectedProtectedRoute 
           path="/study/" 
         >
           <StudyPageContainer message="These are all of the words in the german subtitle file for the film Herr Lehmann. Some of the translations are wrong:) \n and some of the words came out of the script funny" />
         </ConnectedProtectedRoute>
+
+        <ConnectedProtectedRoute 
+          path="/films/new" 
+        >
+          <NewFilmPageContainer />
+        
+        </ConnectedProtectedRoute>
+        
+        <ConnectedProtectedRoute 
+          path="/words/bulkadd" 
+        >
+          <WordsBulkAddPage />
+        
+        </ConnectedProtectedRoute>
+        
         
         <ConnectedProtectedRoute 
           path="/words/" 
+          exact
         >
           <WordsPageContainer />
         </ConnectedProtectedRoute>
+        
         <ConnectedProtectedRoute 
           path="/blacklist/" 
           render={() => {

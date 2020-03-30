@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import React from 'react'
+import { addWords } from '../actions/WordActions/WordActions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -7,6 +8,13 @@ const mapStateToProps = (state, ownProps) => {
     currentIndex: state.cards.currentIndex
   }
 }
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    addWords: (words) => dispatch(addWords(words)),
+  }  
+}
+
 
 export default Component => {
 	
@@ -16,5 +24,5 @@ export default Component => {
 		}
 	}
 
-  return connect(mapStateToProps, {})(WordsContainer)
+  return connect(mapStateToProps, mapDispatchToProps)(WordsContainer)
 }
